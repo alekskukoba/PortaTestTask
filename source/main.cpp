@@ -1,8 +1,13 @@
 #include <stdio.h>
-#include <sys/time.h>
 #include <vector>
 #include <fstream>
 #include <numeric>
+
+#ifdef  _WIN32
+    #include "gettime.h"
+#else
+    #include <sys/time.h>
+#endif
 
 void quickSort(std::vector<int> &vector, int left, int right) {
     int i = left, j = right;
@@ -31,13 +36,21 @@ void quickSort(std::vector<int> &vector, int left, int right) {
 
 
 int main(int argc, char* argv[]) {
+    std::string fileName;
+
+    if (argv[1] == NULL) {
+        printf("Enter the file name as a first argument.");
+        return 1;
+    } else {
+        fileName = argv[1];
+    }
 
     struct timeval startTime, finishTime;
+    long int min = 0, max = 0;
+    double mean = 0, avg = 0, elapsedTime = 0;
     std::vector<int> numbers;
-    long int min, max;
-    double mean, avg;
     std::string line;
-    std::ifstream file ("/home/aleks/Documents/Math/10m.txt");
+    std::ifstream file(fileName);
 
     gettimeofday(&startTime, NULL);
 
@@ -46,6 +59,9 @@ int main(int argc, char* argv[]) {
             numbers.push_back(atoi(line.c_str()));
         }
         file.close();
+    } else {
+        printf("Error when opening file.");
+        return 1;
     }
 
     quickSort(numbers, 0, numbers.size() - 1);
@@ -61,7 +77,7 @@ int main(int argc, char* argv[]) {
     printf("Average value: %f\n", avg);
 
     gettimeofday(&finishTime, NULL);
-    double elapsedTime = (finishTime.tv_sec - startTime.tv_sec) * 1000 + (finishTime.tv_usec - startTime.tv_usec) / 1000;
+    elapsedTime = (finishTime.tv_sec - startTime.tv_sec) * 1000 + (finishTime.tv_usec - startTime.tv_usec) / 1000;
     printf("Elapsed time: %fms\n", elapsedTime);
     return 0;
 }
