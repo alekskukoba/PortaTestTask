@@ -1,5 +1,4 @@
-# PortaTestTask
-## Test task for PortaOne become a developer.
+# Test task for PortaOne become a developer.
 Programm processing file with numbers, finds max, min, average and mean value.
 
 ## To run programm download executable from build folder.
