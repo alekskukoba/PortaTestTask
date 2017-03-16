@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     std::string fileName;
 
     if (argv[1] == NULL) {
-        printf("Enter the file name as a first argument.");
+        printf("Enter the file name as a first argument.\n");
         return 1;
     } else {
         fileName = argv[1];
@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
         }
         file.close();
     } else {
-        printf("Error when opening file.");
+        printf("Error when opening file.\n");
         return 1;
     }
 
