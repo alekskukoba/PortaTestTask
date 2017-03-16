@@ -68,8 +68,12 @@ int main(int argc, char* argv[]) {
 
     min = numbers.front();
     max = numbers.back();
-    mean = (numbers.at(numbers.size() / 2 - 1) + numbers.at(numbers.size() / 2)) / 2.0;
     avg = 1.0 * std::accumulate(numbers.begin(), numbers.end(), 0LL) / numbers.size();
+    if (numbers.size() % 2 == 0)
+        mean = (numbers.at(numbers.size() / 2 - 1) + numbers.at(numbers.size() / 2)) / 2.0;
+    else
+        mean = numbers.at(numbers.size() / 2 - 0.5);
+
 
     printf("Min value: %ld\n", min);
     printf("Max value: %ld\n", max);
