@@ -8,4 +8,4 @@ Programm processing file with numbers, finds max, min, average and mean value.
 Linux: `./test_task_linux /path/to/file`  
 Windows: `test_task_windows.exe D:\path\to\file`
 
-The provided file should contain one number per line.
+The provided file should contain one number per line with unix end line.
